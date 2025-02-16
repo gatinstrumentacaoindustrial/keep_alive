@@ -3,7 +3,7 @@ name: Keep Strapi Alive
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/2 * * * *'  # Executa a cada 10 minutos
+    - cron: '*/5 * * * *'  # Executa a cada 10 minutos
 jobs:
   keep_alive:
     runs-on: ubuntu-latest
