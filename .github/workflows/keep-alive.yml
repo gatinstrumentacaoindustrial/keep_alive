@@ -2,7 +2,7 @@ name: Keep Strapi Alive
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Executa a cada 10 minutos
+    - cron: '*/5 * * * *'  # Executa a cada 10 minutos
   workflow_dispatch:  # Permite rodar manualmente
 
 jobs:
