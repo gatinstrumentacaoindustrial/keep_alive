@@ -1,0 +1,20 @@
+name: Keep Strapi Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Roda a cada 10 minutos
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Strapi Backend
+        run: |
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://gat-backend-strapi.onrender.com/admin)
+
+          if [ "$STATUS_CODE" -eq 200 ]; then
+            echo "✅ Strapi está online! Status Code: $STATUS_CODE"
+          else
+            echo "⚠️ Erro ao pingar o Strapi! Status Code: $STATUS_CODE"
+            exit 1  # Retorna erro para que o GitHub Actions registre falha
+          fi
